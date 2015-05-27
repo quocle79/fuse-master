@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2013 Red Hat, Inc. All rights reserved.
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.0.0" name="fuse-${project.version}">
+    <feature name="esb-commands" version="${project.version}"  resolver='(obr)'>
+        <bundle>mvn:org.jboss.fuse/shared-commands/${project.version}</bundle>
+    </feature>
+
+    <feature name="saaj" version="${saaj-impl.bundle.version}"  resolver='(obr)'>
+        <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.3/${servicemix-specs-version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.saaj-impl/${saaj-impl.bundle.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activation-api-1.1/${servicemix-specs-version}</bundle>
+    </feature>
+
+    <feature name="pax-url-classpath" resolver="(obr)">
+        <bundle start-level="30" dependency="true">mvn:org.ops4j.base/ops4j-base-util-property/${ops4j-base.version}</bundle>
+        <bundle start-level="30" dependency="true">mvn:org.ops4j.base/ops4j-base-lang/${ops4j-base-lang.version}</bundle>
+        <bundle start-level="30" dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-core/${ops4j-pax-swissbox.version}</bundle>
+        <bundle start-level="30" dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-property/${ops4j-pax-swissbox.version}</bundle>
+        <bundle start-level="30" dependency="true">mvn:org.ops4j.pax.url/pax-url-commons/${pax.url.version}</bundle>
+        <bundle start-level="30">mvn:org.ops4j.pax.url/pax-url-classpath/${pax.url.version}</bundle>
+    </feature>
+
+</features>
